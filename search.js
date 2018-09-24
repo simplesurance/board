@@ -42,6 +42,12 @@ function toJobResults(list) {
   })
 }
 
+function findPerson(username) {
+  return people.find(person => {
+    return person.username === username
+  })
+}
+
 on($nameSearch, 'focus', e => {
   $nameResults.classList.remove('hidden')
 })
@@ -65,4 +71,16 @@ on($jobSearch, 'input', e => {
   } else {
     $jobResults.innerHTML = ''
   }
+})
+on($jobResults, 'click', e => {
+  username = e.target.getAttribute('data-value')
+  person = findPerson(username)
+  console.log(person);
+  address = person.address.split('.')
+
+  $seat = $(`.row[data-id="${address[0]}"] .section[data-id="${address[1]}"] .table[data-id="${address[2]}"]`)
+  console.log($seat);
+  $('.highlight').classList.remove('highlight')
+  $seat.classList.add('highlight')
+
 })

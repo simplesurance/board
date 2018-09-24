@@ -32,7 +32,7 @@ body {
 
 .section.engineer {
     background: #a7c9a7e6;
-} 
+}
 
 .section.marketing {
     background: #c9a7a7;
@@ -109,8 +109,20 @@ input, select, #name-search-results {
   padding: 1vh;
 }
 
-  section.engineering {
+/*section.engineering {
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}*/
+.result * {
+  pointer-events: none;
+}
+.search-results .result:hover {
+  background: #0080f5;
+  color: white;
+}
 
-    background: aqua;
-
+.highlight {
+  background: red;
+  color: white;
+  z-index: 1
 }
