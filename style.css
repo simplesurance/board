@@ -148,6 +148,19 @@ input, select {
   display: inline-block;
 }
 
+.user-card {
+  display: block;
+  position: fixed;
+  border: 1px solid #666;
+  padding: 1vw;
+  left: 0;
+  top: 0;
+  margin: 2vw;
+}
+.user-card.hidden {
+  display: none; 
+}
+
 @keyframes select {
   0% {
     transform: scale(1);

@@ -3,6 +3,7 @@ const $nameResults = $('#name-search-results')
 const $jobSearch = $('#job-search')
 const $jobResults = $('#job-search-results')
 const $nameOptions = $('#name-options')
+const $userCard = $('.user-card')
 
 function filterAndSort(list = [], needle = '', keys) {
   return list.filter(value => {
@@ -73,6 +74,16 @@ function selectPerson(person, clear = true) {
   $seat.classList.add('highlight')
   $jobResults.innerHTML = ''
   $nameResults.innerHTML = ''
+
+  if (clear) {
+    $userCard.innerHTML = `<strong>${person.name}</strong><br/>
+      <span>${person.position}</span><br/>
+      <small>[${person.responsabilities.join('<br/>')}]</small>`
+    $userCard.classList.remove('hidden')
+  } else {
+    $userCard.innerHTML = ''
+    $userCard.classList.add('hidden')
+  }
 }
 
 on($nameSearch, 'focus', e => {
