@@ -19,7 +19,7 @@ body {
 
 .section {
   display: flex;
-  padding: 1.5vw 1vw .5vw 1vw;
+  padding: 2.5vw 1vw .5vw 1vw;
   border: 1px solid white;
   flex-wrap: wrap;
   width: 7vw;
@@ -30,6 +30,22 @@ body {
   background: #EEE;
 }
 
+.section.engineer {
+    background: #a7c9a7e6;
+} 
+
+.section.marketing {
+    background: #c9a7a7;
+}
+
+.section.sales-insurance-BD {
+    background: #bdbddb;
+}
+
+.section.design-product {
+    background: #d5bc90;
+}
+
 .section::before {
   content: "Section " attr(data-id);
   position: absolute;
@@ -37,13 +53,14 @@ body {
   width: 100%;
   top: 0;
   left: 0;
-  color: #999;
+  color: #fff;
   line-height: 3vh;
 }
 
 .row {
   display: flex;
   flex-direction: row-reverse;
+  margin-bottom: 5vh;
 }
 
 .entrance {
@@ -76,26 +93,24 @@ body {
   flex-direction: row;
   justify-content: center;
 }
-input, select {
+input, select, #name-search-results {
   display: block;
   margin: 1vh 0.5vh;
   width: 20vw;
   box-sizing: border-box;
 }
-.search-results {
+#name-search-results {
   background: white;
   text-align: left;
   margin-top: -1vh;
-  box-shadow: 0 11px 25px 0 rgba(0,0,0,0.2);
-  max-height: 32vh;
-  overflow: auto;
-  position: absolute;
-  z-index: 1;
-  width: 20vw;
-  margin-right: 0.5vh;
-  margin-left: 0.5vh;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2)
 }
-.search-results .result {
+#name-search-results .result {
   padding: 1vh;
-  border-bottom: 1px solid #eee;
+}
+
+  section.engineering {
+
+    background: aqua;
+
 }
