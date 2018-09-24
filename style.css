@@ -126,3 +126,12 @@ input, select, #name-search-results {
   color: white;
   z-index: 1
 }
+
+.responsability {
+  padding: 1px 4px;
+  margin: 1px 3px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  white-space: nowrap;
+  display: inline-block;
+}

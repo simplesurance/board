@@ -159,7 +159,7 @@
       "position": "Fullstack Software Engineer",
       "address": "1.4.2",
       "responsabilities": [
-        "Policy Backend Engineer", "Claim Backend Engineer"
+        "Policy", "Backend Engineer", "Claim"
       ]
     },
       {
@@ -168,7 +168,7 @@
       "position": "Software Development Team Lead",
       "address": "1.4.3",
       "responsabilities": [
-        "Teamlead Claim Backend Engineer"
+        "Teamlead Claim", "Backend Engineer"
       ]
     },
       {
@@ -177,7 +177,7 @@
       "position": "Senior Software Developer",
       "address": "1.4.4",
       "responsabilities": [
-        "Claim Backend Engineer", "Cross Selling Backend Engineer"
+        "Claim", "Cross Selling", "Backend Engineer"
       ]
     },
       {
@@ -186,7 +186,7 @@
       "position": "Language Agnostic Engineer",
       "address": "1.4.7",
       "responsabilities": [
-        "Policy Backend Engineer"
+        "Policy", "Backend Engineer"
       ]
     },
       {
@@ -195,7 +195,7 @@
       "position": "Golang Software Engineer",
       "address": "1.4.8",
       "responsabilities": [
-        "Policy Backend Engineer"
+        "Policy", "Backend Engineer"
       ]
     },
       {
