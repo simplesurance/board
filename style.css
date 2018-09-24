@@ -76,20 +76,26 @@ body {
   flex-direction: row;
   justify-content: center;
 }
-input, select, #name-search-results {
+input, select {
   display: block;
   margin: 1vh 0.5vh;
   width: 20vw;
   box-sizing: border-box;
 }
-#name-search-results {
+.search-results {
   background: white;
   text-align: left;
   margin-top: -1vh;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2)
+  box-shadow: 0 11px 25px 0 rgba(0,0,0,0.2);
+  max-height: 32vh;
+  overflow: auto;
+  position: absolute;
+  z-index: 1;
+  width: 20vw;
+  margin-right: 0.5vh;
+  margin-left: 0.5vh;
 }
-#name-search-results .result {
+.search-results .result {
   padding: 1vh;
+  border-bottom: 1px solid #eee;
 }
-
-  
