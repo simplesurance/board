@@ -1,0 +1,95 @@
+body {
+  font-family: sans;
+  text-align: center;
+}
+
+.table {
+  height: 9vh;
+  width: 3vw;
+  background: white;
+  box-shadow: 0.1vw 0.1vw 5px 0 rgba(0,0,0,0.2);
+  margin: 0.2vw;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #AAA;
+  font-size: 2vw;
+}
+
+.section {
+  display: flex;
+  padding: 1.5vw 1vw .5vw 1vw;
+  border: 1px solid white;
+  flex-wrap: wrap;
+  width: 7vw;
+  flex-direction: column;
+  max-height: calc(4 * 12vh);
+  direction: rtl;
+  position: relative;
+  background: #EEE;
+}
+
+.section::before {
+  content: "Section " attr(data-id);
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 0;
+  left: 0;
+  color: #999;
+  line-height: 3vh;
+}
+
+.row {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.entrance {
+  position: absolute;
+  writing-mode: sideways-lr;
+  text-align: center;
+  height: 100%;
+  right: -2vw;
+}
+
+.floor {
+  position: relative;
+  padding: 0 1vw;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.section-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-row:nth-child(2n) {
+  flex-direction: column-reverse;
+}
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+input, select, #name-search-results {
+  display: block;
+  margin: 1vh 0.5vh;
+  width: 20vw;
+  box-sizing: border-box;
+}
+#name-search-results {
+  background: white;
+  text-align: left;
+  margin-top: -1vh;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2)
+}
+#name-search-results .result {
+  padding: 1vh;
+}
+
+  
