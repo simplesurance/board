@@ -134,7 +134,9 @@ input, select {
 .highlight {
   background: #e15656;
   color: white;
-  z-index: 1
+  z-index: 1;
+  animation-duration: 300ms;
+  animation-name: select;
 }
 
 .responsability {
@@ -144,4 +146,16 @@ input, select {
   border-radius: 5px;
   white-space: nowrap;
   display: inline-block;
+}
+
+@keyframes select {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

@@ -2,6 +2,7 @@ const $nameSearch = $('#name-search')
 const $nameResults = $('#name-search-results')
 const $jobSearch = $('#job-search')
 const $jobResults = $('#job-search-results')
+const $nameOptions = $('#name-options')
 
 function filterAndSort(list = [], needle = '', keys) {
   return list.filter(value => {
@@ -105,6 +106,12 @@ on($jobSearch, 'input', e => {
   } else {
     $jobResults.innerHTML = ''
   }
+})
+on($nameOptions, 'change', e => {
+  console.log(e);
+  username = e.target.options[e.target.selectedIndex].getAttribute('value')
+  person = findPerson(username)
+  selectPerson(person)
 })
 on($jobResults, 'click', e => {
   username = e.target.getAttribute('data-value')
