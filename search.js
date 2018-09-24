@@ -71,6 +71,7 @@ function selectPerson(person, clear = true) {
   }
   $seat.classList.add('highlight')
   $jobResults.innerHTML = ''
+  $nameResults.innerHTML = ''
 }
 
 on($nameSearch, 'focus', e => {
@@ -106,6 +107,11 @@ on($jobSearch, 'input', e => {
   }
 })
 on($jobResults, 'click', e => {
+  username = e.target.getAttribute('data-value')
+  person = findPerson(username)
+  selectPerson(person)
+})
+on($nameResults, 'click', e => {
   username = e.target.getAttribute('data-value')
   person = findPerson(username)
   selectPerson(person)

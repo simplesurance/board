@@ -4,8 +4,8 @@ body {
 }
 
 .table {
-  height: 9vh;
-  width: 3vw;
+  height: 8vh;
+  width: 2vw;
   background: white;
   box-shadow: 0.1vw 0.1vw 5px 0 rgba(0,0,0,0.2);
   margin: 0.2vw;
@@ -22,7 +22,7 @@ body {
   padding: 2.5vw 1vw .5vw 1vw;
   border: 1px solid white;
   flex-wrap: wrap;
-  width: 7vw;
+  width: 5vw;
   flex-direction: column;
   max-height: calc(4 * 12vh);
   direction: rtl;
@@ -54,7 +54,7 @@ body {
   top: 0;
   left: 0;
   color: #fff;
-  line-height: 3vh;
+  line-height: 5vh;
 }
 
 .row {
@@ -67,8 +67,13 @@ body {
   position: absolute;
   writing-mode: sideways-lr;
   text-align: center;
-  height: 100%;
-  right: -2vw;
+  height: 60%;
+  right: -4vw;
+  background: #90cad5;
+  color: white;
+  font-size: 2em;
+  padding: 0 1vw;
+  line-height: 2vw;
 }
 
 .floor {
@@ -93,26 +98,31 @@ body {
   flex-direction: row;
   justify-content: center;
 }
-input, select, #name-search-results {
+input, select {
   display: block;
   margin: 1vh 0.5vh;
   width: 20vw;
   box-sizing: border-box;
 }
-#name-search-results {
+.search-results {
   background: white;
   text-align: left;
   margin-top: -1vh;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.2)
+  box-shadow: 0 11px 25px 0 rgba(0,0,0,0.2);
+  max-height: 32vh;
+  overflow: auto;
+  position: absolute;
+  z-index: 2;
+  width: 20vw;
+  margin-right: 0.5vh;
+  margin-left: 0.5vh;
 }
-#name-search-results .result {
+.search-results .result {
   padding: 1vh;
-}
-
-/*section.engineering {
   border-bottom: 1px solid #eee;
   cursor: pointer;
-}*/
+}
+
 .result * {
   pointer-events: none;
 }
@@ -122,7 +132,7 @@ input, select, #name-search-results {
 }
 
 .highlight {
-  background: red;
+  background: #e15656;
   color: white;
   z-index: 1
 }
