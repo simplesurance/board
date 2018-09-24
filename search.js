@@ -78,7 +78,7 @@ function selectPerson(person, clear = true) {
   if (clear) {
     $userCard.innerHTML = `<strong>${person.name}</strong><br/>
       <span>${person.position}</span><br/>
-      <small>[${person.responsabilities.join('<br/>')}]</small>`
+      <small>${person.responsabilities.join('<br/>')}</small>`
     $userCard.classList.remove('hidden')
   } else {
     $userCard.innerHTML = ''
