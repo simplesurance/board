@@ -8,21 +8,39 @@
   <title>Simplesurance - Responsability Board</title>
 </head>
 <body>
-  <div class="search-bar">
-    <div>
-      <input type="text" id="name-search" placeholder="Search Name...">
-      <div class="search-results" id="name-search-results"></div>
-      <select name="name-options" id="name-options">
-        <option value=""></option>
-      </select>
+  <div class="sidebar">
+    <div class="auth-bar">
+      <div class="auth-window">
+        <button id="authorize_button">Sign in with google</button>
+        <pre id="content"></pre>
+      </div>
+      <button id="signout_button" style="display: none;">Sign Out</button>
     </div>
-    <div>
-      <input type="text" id="job-search" placeholder="Search Job...">
-      <div class="search-results" id="job-search-results"></div>
+    <div class="search-bar">
+      <div>
+        <label for="name-search">
+          Name Search
+          <input type="text" id="name-search" placeholder="e.g. John Smith">
+        </label>
+        <div class="search-results" id="name-search-results"></div>
+        <label for="name-options">
+          Name List
+          <select name="name-options" id="name-options">
+            <option value=""></option>
+          </select>
+        </label>
+      </div>
+      <div>
+        <label for="job-search">
+          Roles Search
+          <input type="text" id="job-search" placeholder="Search Job...">
+        </label>
+        <div class="search-results" id="job-search-results"></div>
+      </div>
+      <div class="user-card hidden"></div>
     </div>
   </div>
   <div class="floor">
-    <div class="user-card hidden"></div>
     <div class="entrance">Entrance</div>
     <div class="row" data-id="1">
       <div class="section engineer" data-id="1">
@@ -200,5 +218,11 @@
   <script src="utils.js" charset="utf-8"></script>
   <script src="script.js" charset="utf-8"></script>
   <script src="search.js" charset="utf-8"></script>
+
+  <script src="sheets_api.js" charset="utf-8"></script>
+  <script async defer src="https://apis.google.com/js/api.js"
+    onload="this.onload=function(){};handleClientLoad()"
+    onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  </script>
 </body>
 </html>
