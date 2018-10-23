@@ -54,9 +54,9 @@ function toJobResults(list) {
   })
 }
 
-function findPerson(username) {
+function findPerson(value, property = 'username') {
   return people.find(person => {
-    return person.username === username
+    return person[property] === value
   })
 }
 
@@ -133,4 +133,19 @@ on($nameResults, 'click', e => {
   username = e.target.getAttribute('data-value')
   person = findPerson(username)
   selectPerson(person)
+})
+$$('.table').forEach(table => {
+  table.addEventListener('click', () => {
+    const parentSection = table.parentElement.parentElement
+    const parentRow = parentSection.parentElement
+
+    const tableAddress = `${parentRow.getAttribute('data-id')}.${parentSection.getAttribute('data-id')}.${table.getAttribute('data-id')}`
+    const person = findPerson(tableAddress, 'address')
+    if (!person) {
+      console.error('Could not find person on address ' + tableAddress)
+      clearSelection()
+      return
+    }
+    selectPerson(person)
+  })
 })
