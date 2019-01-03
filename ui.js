@@ -2,7 +2,7 @@
 const FLOORS = 2
 const FLOOR_ID_OFFSET = 8
 const ROWS = 2
-const SECTIONS = 6
+const SECTIONS = 7
 const TABLES = 8
 
 const sections = {
@@ -17,7 +17,9 @@ const sections = {
   'hr': ['9.1.1'],
   'founders': ['9.1.2'],
   'office': ['9.2.1'],
-  'cc': ['9.1.3', '9.1.4', '9.1.5', '9.1.6', '9.2.2', '9.2.3', '9.2.4', '9.2.5', '9.2.6']
+  'cc': [
+    '9.1.3', '9.1.4', '9.1.5', '9.1.6', '9.1.6', '9.1.7',
+    '9.2.2', '9.2.3', '9.2.4', '9.2.5', '9.2.6', '9.2.7']
 }
 
 function generateTables() {
@@ -61,7 +63,9 @@ function generateTables() {
     $control.setAttribute('data-id', $floor.id)
     on($control, 'click', e => {
       $$('.floor').forEach(e => e.classList.remove('focused'))
+      $$('.color-labels').forEach(e => e.classList.add('hidden'))
       $(`.floor[id='${e.target.getAttribute('data-id')}']`).classList.add('focused')
+      $(`.color-labels[data-id='${e.target.getAttribute('data-id')}']`).classList.remove('hidden')
     })
     $('.floor-control').appendChild($control)
 

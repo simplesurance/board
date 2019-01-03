@@ -33,6 +33,10 @@ body {
   opacity: 0.5;
   cursor: default;
 }
+.table.disabled {
+  opacity: 0;
+  cursor: default;
+}
 
 .table.highlight {
   background: #000;
@@ -49,7 +53,7 @@ body {
   padding: 2.5vw 1vw .5vw 1vw;
   border: 1px solid white;
   flex-wrap: wrap;
-  width: 8vw;
+  width: 7.5vw;
   flex-direction: column;
   direction: rtl;
   position: relative;
@@ -135,13 +139,13 @@ body {
   background: white;
   z-index: 1;
   opacity: 1;
-  transition: opacity 100ms ease-in-out 100ms;
+  transition: opacity 150ms ease-in-out;
 }
 
 .floor:not(.focused) {
   z-index: 0;
   opacity: 0;
-  transition: opacity 100ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
 }
 
 .floor::before {

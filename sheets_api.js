@@ -49,11 +49,11 @@ function initClient() {
 function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     authWindow.style.display = 'none';
-    signoutButton.style.display = 'block';
+    signoutButton.removeAttribute('disabled');
     window.dispatchEvent(new Event('signInSuccess'))
   } else {
     authWindow.style.display = 'flex';
-    signoutButton.style.display = 'none';
+    signoutButton.setAttribute('disabled', 'disabled');
     window.dispatchEvent(new Event('signInFailed'))
   }
 }

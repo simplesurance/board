@@ -65,9 +65,9 @@ function clearSelection() {
 }
 
 function selectPerson(person, clear = true) {
-  address = person.address.split('.')
+  address = person.address
 
-  $seat = $(`.row[data-id="${address[0]}"] .section[data-id="${address[1]}"] .table[data-id="${address[2]}"]`)
+  $seat = $(`.table[id="${address}"]`)
   if (clear) {
     clearSelection()
   }
@@ -137,14 +137,15 @@ on($nameResults, 'click', e => {
 
 function handleTableClick () {
   $$('.table').forEach(table => {
-    const parentSection = table.parentElement.parentElement
-    const parentRow = parentSection.parentElement
-
-    const tableAddress = `${parentRow.getAttribute('data-id')}.${parentSection.getAttribute('data-id')}.${table.getAttribute('data-id')}`
+    const tableAddress = table.id
     const person = findPerson(tableAddress, 'address')
+
     if (!person) {
       table.classList.add('empty')
-
+      return
+    }
+    if (person.name === 'disabled') {
+      table.classList.add('disabled')
       return
     }
 
