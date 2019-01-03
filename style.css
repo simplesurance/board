@@ -1,3 +1,8 @@
+html {
+  padding-left: 300px;
+  box-sizing: border-box;
+  width: 100%;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   text-align: center;
@@ -7,14 +12,15 @@ body {
   margin: 0;
   width: 100%;
   height: 100vh;
+  position: relative;
 }
 
 .table {
-  height: 8vh;
-  width: 2vw;
+  height: calc(25% - 4px);
+  cursor: pointer;
   background: white;
   box-shadow: 0.1vw 0.1vw 5px 0 rgba(0,0,0,0.2);
-  margin: 0.2vw;
+  margin: 2px;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -23,33 +29,76 @@ body {
   font-size: 2vw;
 }
 
+.table.empty {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.table.highlight {
+  background: #000;
+  color: white;
+  z-index: 2;
+  animation-duration: 500ms;
+  animation-name: select;
+  mix-blend-mode: overlay;
+}
+
 .section {
   display: flex;
+  max-height: 35vh;
   padding: 2.5vw 1vw .5vw 1vw;
   border: 1px solid white;
   flex-wrap: wrap;
-  width: 5vw;
+  width: 8vw;
   flex-direction: column;
-  max-height: calc(4 * 12vh);
   direction: rtl;
   position: relative;
   background: #EEE;
 }
 
-.section.engineer {
-    background: #a7c9a7e6;
+.section-tables {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100%;
 }
 
-.section.marketing {
-    background: #c9a7a7;
+.section-tables:nth-child(2n) {
+  flex-direction: column-reverse;
 }
 
-.section.sales-insurance-BD {
-    background: #bdbddb;
+.enginering {
+  background-color: #D37780;
 }
-
-.section.design-product {
-    background: #d5bc90;
+.marketing {
+  background-color: #6BA099;
+}
+.design {
+  background-color: #AEE1A4;
+}
+.product {
+  background-color: #9AD58E;
+}
+.integrations {
+  background-color: #75B767;
+}
+.sales {
+  background-color: #DBA37C;
+}
+.insurance {
+  background-color: #FFCDAA;
+}
+.hr {
+  background-color: #88BBB4;
+}
+.founders {
+  background-color: #9AD58E;
+}
+.office {
+  background-color: #6BA099;
+}
+.cc {
+  background-color: #D37780;
 }
 
 .section::before {
@@ -67,29 +116,14 @@ body {
   display: flex;
   flex-direction: row-reverse;
 }
-.row:last-child {
-  margin-top: 7vh;
-}
 
-.entrance {
-  position: absolute;
-  text-align: center;
-  right: 0;
-  background: #90cad5;
-  color: white;
-  font-size: 2vw;
-  padding: 0 2vw 0 3vw;
-  line-height: 2vw;
-}
-.entrance::before {
-  content: "";
-  display: inline-block;
+.floor-container {
   position: absolute;
   left: 0;
-  box-sizing: border-box;
-  border: 1vw solid white;
-  border-color: white #90cad5 white white;
-  height: 2vw;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .floor {
@@ -98,23 +132,32 @@ body {
   align-items: center;
   display: inline-flex;
   flex-direction: column;
+  background: white;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 100ms ease-in-out 100ms;
 }
 
-.section-row {
-  display: flex;
-  flex-direction: column;
+.floor:not(.focused) {
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
 }
 
-.section-row:nth-child(2n) {
-  flex-direction: column-reverse;
+.floor::before {
+  content: attr(data-id) "th Floor";
+  font-size: 1.2em;
+  line-height: 2;
+  color: gray;
 }
+
 .search-bar {
 
 }
-input, select {
+input, select, button {
   display: block;
   margin: 1vh 0.5vh;
-  width: 200px;
+  width: 300px;
   padding: 5px;
   box-sizing: border-box;
 }
@@ -145,14 +188,6 @@ input, select {
   color: white;
 }
 
-.highlight {
-  background: #e15656;
-  color: white;
-  z-index: 1;
-  animation-duration: 300ms;
-  animation-name: select;
-}
-
 .responsability {
   padding: 1px 4px;
   margin: 1px 3px;
@@ -170,7 +205,8 @@ input, select {
   top: 0;
   margin-top: 2vw;
 }
-.user-card.hidden {
+
+.hidden {
   display: none;
 }
 
@@ -178,8 +214,14 @@ input, select {
   0% {
     transform: scale(1);
   }
-  30% {
-    transform: scale(1.5);
+  20% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.1);
   }
   100% {
     transform: scale(1);
@@ -188,12 +230,14 @@ input, select {
 
 .sidebar {
   position: fixed;
+  z-index: 1;
   height: 100%;
   box-shadow: 2px 0 2px 0 lightgray;
   text-align: left;
   top: 0;
   left: 0;
   padding: 15px;
+  width: 300px;
 }
 .auth-bar {
   margin-bottom: 50px;

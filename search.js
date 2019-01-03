@@ -134,18 +134,26 @@ on($nameResults, 'click', e => {
   person = findPerson(username)
   selectPerson(person)
 })
-$$('.table').forEach(table => {
-  table.addEventListener('click', () => {
+
+function handleTableClick () {
+  $$('.table').forEach(table => {
     const parentSection = table.parentElement.parentElement
     const parentRow = parentSection.parentElement
 
     const tableAddress = `${parentRow.getAttribute('data-id')}.${parentSection.getAttribute('data-id')}.${table.getAttribute('data-id')}`
     const person = findPerson(tableAddress, 'address')
     if (!person) {
-      console.error('Could not find person on address ' + tableAddress)
-      clearSelection()
+      table.classList.add('empty')
+
       return
     }
-    selectPerson(person)
+
+    table.addEventListener('click', () => {
+      if (!person) {
+        clearSelection()
+        return
+      }
+      selectPerson(person)
+    })
   })
-})
+}

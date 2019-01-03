@@ -6,7 +6,7 @@ const NAME = 3
 const ROLE = 4
 const HIPCHAT = 5
 
-function listMajors() {
+function connect() {
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: '1Mf6l4NasmHx8FKlrhTU_am4bdMzRu5yC1yMQ6PqG1RQ',
     range: 'User Data!A2:F',
@@ -33,9 +33,7 @@ function listMajors() {
   });
 }
 
-window.addEventListener('signInSuccess', function () {
-  listMajors()
-})
+window.addEventListener('signInSuccess', connect)
 
 function setPeople (people) {
   console.log(people)
@@ -46,4 +44,8 @@ function setPeople (people) {
     $("#name-options").appendChild($option)
   })
   window.people = people
+  $('.auth-window').classList.add('hidden')
+  
+  generateTables()
+  handleTableClick()
 }
