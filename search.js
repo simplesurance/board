@@ -11,9 +11,11 @@ function filterAndSort(list = [], needle = '', keys) {
       return keys.find(key => {
         if (Array.isArray(value[key])) {
           return (value[key].join('')).toLowerCase().includes(needle.toLowerCase())
-        } else {
+        } else if (value[key]) {
           return value[key].toLowerCase().includes(needle.toLowerCase())
         }
+
+        return null
       })
     } else {
       return value.toLowerCase().includes(needle.toLowerCase())
@@ -46,7 +48,7 @@ function toJobResults(list) {
     let content = ''
     content += `<small>${person.name}</small><br/>`
     content += `<span>${person.position}</span><br/>`
-    person.responsabilities.forEach(resp => {
+    person.roles.forEach(resp => {
       content += `<small class="responsability">${resp}</small>`
     })
     $option.innerHTML = content
@@ -78,7 +80,7 @@ function selectPerson(person, clear = true) {
   if (clear) {
     $userCard.innerHTML = `<strong>${person.name}</strong><br/>
       <span>${person.position}</span><br/>
-      <small>${person.responsabilities.join('<br/>')}</small>`
+      <small>${person.roles.join('<br/>')}</small>`
     $userCard.classList.remove('hidden')
   } else {
     $userCard.innerHTML = ''
@@ -103,7 +105,7 @@ on($nameSearch, 'input', e => {
 })
 on($jobSearch, 'keydown', e => {
   if (e.which == 13 || e.keyCode == 13) { //ENTER
-    results = filterAndSort(people, e.target.value, ['position', 'responsabilities'])
+    results = filterAndSort(people, e.target.value, ['position', 'roles'])
     clearSelection()
     results.forEach(person => selectPerson(person, false))
   }
@@ -111,7 +113,7 @@ on($jobSearch, 'keydown', e => {
 on($jobSearch, 'input', e => {
   if (e.target.value.length > 0) {
 
-    results = filterAndSort(people, e.target.value, ['position', 'responsabilities'])
+    results = filterAndSort(people, e.target.value, ['position', 'roles'])
     $jobResults.innerHTML = ''
     toJobResults(results).forEach($result => $jobResults.append($result))
   } else {
@@ -144,7 +146,7 @@ function handleTableClick () {
       table.classList.add('empty')
       return
     }
-    if (person.name === 'disabled') {
+    if (person.hideSeat) {
       table.classList.add('disabled')
       return
     }
