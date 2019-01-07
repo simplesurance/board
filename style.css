@@ -116,8 +116,17 @@ body {
 .office {
   background-color: #6BA099;
 }
-.cc {
+.finance {
+  background-color: #75B767;
+}
+.broker {
+  background-color: #DBA37C;
+}
+.cc-1 {
   background-color: #D37780;
+}
+.cc-2 {
+  background-color: rgb(240, 120, 132);
 }
 
 .section::before {
