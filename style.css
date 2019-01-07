@@ -207,9 +207,9 @@ input, select, button {
   color: white;
 }
 
-.responsability {
+.tag:not(:empty) {
   padding: 1px 4px;
-  margin: 1px 3px;
+  margin: 1px 3px 1px 0;
   border: 1px solid #999;
   border-radius: 5px;
   white-space: nowrap;

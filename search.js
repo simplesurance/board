@@ -49,7 +49,7 @@ function toJobResults(list) {
     content += `<small>${person.name}</small><br/>`
     content += `<span>${person.position}</span><br/>`
     person.roles.forEach(resp => {
-      content += `<small class="responsability">${resp}</small>`
+      content += `<small class="tag">${resp}</small>`
     })
     $option.innerHTML = content
     return $option
@@ -81,7 +81,9 @@ function selectPerson(person, clear = true) {
   if (clear) {
     $userCard.innerHTML = `<strong>${person.name}</strong><br/>
       <span>${person.position}</span><br/>
-      <small>${person.roles.join('<br/>')}</small>`
+      ${person.roles.map(role => {
+        return `<span class="tag">${role}</span>`
+      }).join('')}`
     $userCard.classList.remove('hidden')
   } else {
     $userCard.innerHTML = ''
