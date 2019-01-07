@@ -76,6 +76,7 @@ function selectPerson(person, clear = true) {
   $seat.classList.add('highlight')
   $jobResults.innerHTML = ''
   $nameResults.innerHTML = ''
+  showFloor(person.floor)
 
   if (clear) {
     $userCard.innerHTML = `<strong>${person.name}</strong><br/>
@@ -92,7 +93,7 @@ on($nameSearch, 'focus', e => {
   $nameResults.classList.remove('hidden')
 })
 on($nameSearch, 'blur', e => {
-  $nameResults.classList.add('hidden')
+  setTimeout(() => $nameResults.classList.add('hidden'), 500)
 })
 on($nameSearch, 'input', e => {
   if (e.target.value.length > 0) {
@@ -150,6 +151,10 @@ function handleTableClick () {
       table.classList.add('disabled')
       return
     }
+
+    const splitName = person.name.split(' ')
+    const initials = splitName[0][0] + splitName[splitName.length - 1][0]
+    table.innerText = initials
 
     table.addEventListener('click', () => {
       if (!person) {

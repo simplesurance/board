@@ -16,7 +16,7 @@ body {
 }
 
 .table {
-  height: calc(25% - 4px);
+  position: relative;
   cursor: pointer;
   background: white;
   box-shadow: 0.1vw 0.1vw 5px 0 rgba(0,0,0,0.2);
@@ -26,7 +26,22 @@ body {
   justify-content: center;
   align-items: center;
   color: #AAA;
-  font-size: 2vw;
+  font-size: 1.5vw;
+  height: calc(8vh - 4px);
+  width: 3.5vw;
+}
+
+.table:not(.disabled)::before {
+  content: attr(data-id);
+  position: absolute;
+  font-size: 50%;
+  bottom: 0;
+  right: 0;
+  opacity: 0.7;
+}
+.table.empty::before {
+  color: gray;
+  opacity: 1;
 }
 
 .table.empty {
@@ -174,7 +189,7 @@ input, select, button {
   overflow: auto;
   position: absolute;
   z-index: 2;
-  width: 20vw;
+  width: 300px;
   margin-right: 0.5vh;
   margin-left: 0.5vh;
 }

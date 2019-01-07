@@ -20,9 +20,11 @@ function connect() {
       range.values.forEach(row => {
         if (row[NAME] && row[NAME] !== '-') {
           people.push({
-            username: row[USERNAME],
-            name: row[NAME],
+            username: (row[USERNAME] || row[NAME].toLowerCase().replace(/ /, '')).trim(),
+            hideSeat: row[NAME].trim() === 'disabled',
+            name: row[NAME].trim(),
             position: row[POSITION],
+            floor: row[FLOOR],
             address: `${row[FLOOR]}.${row[ROW]}.${row[SECTION]}.${row[TABLE]}`,
             roles: (row[ROLES]||"").split(/,/),
           })
@@ -39,15 +41,11 @@ window.addEventListener('signInSuccess', connect)
 
 function setPeople (people) {
   console.log(people)
-  people.forEach(person => {
-    const $option = document.createElement('option')
-    $option.setAttribute('value', person.username)
-    $option.innerText = person.name
-    $("#name-options").appendChild($option)
-  })
   window.people = people
+  
   $('.auth-window').classList.add('hidden')
 
+  generateDropdown()
   generateTables()
   handleTableClick()
 }

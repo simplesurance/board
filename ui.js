@@ -22,6 +22,13 @@ const sections = {
     '9.2.2', '9.2.3', '9.2.4', '9.2.5', '9.2.6', '9.2.7']
 }
 
+function showFloor(floorId) {
+  $$('.floor').forEach(e => e.classList.remove('focused'))
+  $$('.color-labels').forEach(e => e.classList.add('hidden'))
+  $(`.floor[id='${floorId}']`).classList.add('focused')
+  $(`.color-labels[data-id='${floorId}']`).classList.remove('hidden')
+}
+
 function generateTables() {
   for (let floor = 0; floor < FLOORS; floor++) {
     const $floorContainer = document.createElement('div')
@@ -49,7 +56,7 @@ function generateTables() {
           $table.classList.add('table')
           $table.id = `${$floor.id}.${row}.${section}.${table}`
           $table.setAttribute('data-id', table)
-          $table.innerText = table
+          // $table.innerText = table
           $table.style.order = table > TABLES/2 ? 2*TABLES - table : table
           $sectionTables.appendChild($table)
         }
@@ -62,10 +69,8 @@ function generateTables() {
     $control.innerText = `${$floor.id}th Floor`
     $control.setAttribute('data-id', $floor.id)
     on($control, 'click', e => {
-      $$('.floor').forEach(e => e.classList.remove('focused'))
-      $$('.color-labels').forEach(e => e.classList.add('hidden'))
-      $(`.floor[id='${e.target.getAttribute('data-id')}']`).classList.add('focused')
-      $(`.color-labels[data-id='${e.target.getAttribute('data-id')}']`).classList.remove('hidden')
+      const floorId = e.target.getAttribute('data-id')
+      showFloor(floorId)
     })
     $('.floor-control').appendChild($control)
 
@@ -79,4 +84,17 @@ function generateTables() {
   }
 
   $('.floor').classList.add('focused')
+}
+
+
+function generateDropdown() {
+  people.sort((a,b) => a.name > b.name ? 1 : a.name < b.name ? -1 : 0)
+  .forEach(person => {
+    if (person.name != 'disabled') {
+      const $option = document.createElement('option')
+      $option.setAttribute('value', person.username)
+      $option.innerText = person.name
+      $("#name-options").appendChild($option)
+    }
+  })
 }
