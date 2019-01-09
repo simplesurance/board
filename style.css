@@ -238,6 +238,10 @@ input, select, button {
   display: none;
 }
 
+.flex {
+  display: flex;
+}
+
 @keyframes select {
   0% {
     transform: scale(1);
@@ -268,7 +272,8 @@ input, select, button {
   width: 300px;
 }
 .auth-bar {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 .auth-window {
   position: fixed;

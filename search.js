@@ -79,7 +79,7 @@ function selectPerson(person, clear = true) {
   showFloor(person.floor)
 
   if (clear) {
-    $userCard.innerHTML = `<strong>${person.name}</strong><br/>
+    $userCard.innerHTML = `<strong>${person.name}</strong> (<span>${person.username}</span>)<br/>
       <span>${person.position}</span><br/>
       ${person.roles.map(role => {
         return `<span class="tag">${role}</span>`

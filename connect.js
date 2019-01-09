@@ -37,12 +37,35 @@ function connect() {
   });
 }
 
-window.addEventListener('signInSuccess', connect)
+function getConfig() {
+  return gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: '1Mf6l4NasmHx8FKlrhTU_am4bdMzRu5yC1yMQ6PqG1RQ',
+    range: 'Configs!A1:B',
+    majorDimension: 'ROWS'
+  }).then(function(response) {
+    const range = response.result
+    window.config = {}
+
+    range.values.forEach(values => {
+      window.config[values[0]] = values[1]
+    })
+    console.log(window.config)
+
+  }, function(response) {
+    appendPre('Error: ' + response.result.error.message);
+  });
+}
+
+window.addEventListener('signInSuccess', () => {
+  getConfig()
+  .then(connect)
+})
+on($('#refresh_button'), 'click', connect)
 
 function setPeople (people) {
   console.log(people)
   window.people = people
-  
+
   $('.auth-window').classList.add('hidden')
 
   generateDropdown()

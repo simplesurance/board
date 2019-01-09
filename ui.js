@@ -1,9 +1,4 @@
-
-const FLOORS = 2
 const FLOOR_ID_OFFSET = 8
-const ROWS = 2
-const SECTIONS = 7
-const TABLES = 8
 
 const sections = {
   'enginering': ['8.1.1', '8.1.2', '8.1.3', '8.1.4', '8.1.5'],
@@ -31,7 +26,13 @@ function showFloor(floorId) {
 }
 
 function generateTables() {
-  for (let floor = 0; floor < FLOORS; floor++) {
+  $$('.floor-container').forEach(e => e.remove())
+  var node = $('.floor-control');
+  while (node.firstChild) {
+      node.removeChild(node.firstChild);
+  }
+
+  for (let floor = 0; floor < config.floors; floor++) {
     const $floorContainer = document.createElement('div')
     $floorContainer.classList.add('floor-container')
 
@@ -39,12 +40,12 @@ function generateTables() {
     $floor.classList.add('floor')
     $floor.id = floor + FLOOR_ID_OFFSET
     $floor.setAttribute('data-id', floor + FLOOR_ID_OFFSET)
-    for (let row = 1; row <= ROWS; row++) {
+    for (let row = 1; row <= config.rows; row++) {
       const $row = document.createElement('div')
       $row.classList.add('row')
       $row.id = `${$floor.id}.${row}`
       $row.setAttribute('data-id', row)
-      for (let section = 1; section <= SECTIONS; section++) {
+      for (let section = 1; section <= config.sections; section++) {
         const $section = document.createElement('div')
         $section.classList.add('section')
         $section.id = `${$floor.id}.${row}.${section}`
@@ -52,13 +53,13 @@ function generateTables() {
         const $sectionTables = document.createElement('div')
         $sectionTables.classList.add('section-tables')
         $section.appendChild($sectionTables)
-        for (let table = 1; table <= TABLES; table++) {
+        for (let table = 1; table <= config.tables; table++) {
           const $table = document.createElement('div')
           $table.classList.add('table')
           $table.id = `${$floor.id}.${row}.${section}.${table}`
           $table.setAttribute('data-id', table)
           // $table.innerText = table
-          $table.style.order = table > TABLES/2 ? 2*TABLES - table : table
+          $table.style.order = table > config.tables/2 ? 2*config.tables - table : table
           $sectionTables.appendChild($table)
         }
         $row.appendChild($section)
